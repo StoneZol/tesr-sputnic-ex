@@ -1,54 +1,62 @@
-# React + TypeScript + Vite
+# 🛒 ProductCard Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Компонент `ProductCard` — это адаптивная карточка товара, разработанная с использованием **React** и **TypeScript**.
 
-Currently, two official plugins are available:
+## 📋 Задание
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Реализовать компонент, который принимает следующие props:
 
-## Expanding the ESLint configuration
+- `title: string` — название товара  
+- `origin: string` — страна происхождения  
+- `price: number` — цена в **копейках**  
+- `currency: string` — валюта "RUB" | "USD" | "EUR"
+- `imageUrl: string` — ссылка на изображение товара  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Дополнительно:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Отображать цену с помощью `Intl.NumberFormat` с учетом локали и валюты.
+- Адаптивная вёрстка: при ширине экрана `< 500px` карточка переходит в одну колонку.
+
+## 🧩 Технологии
+
+- React
+- TypeScript
+- Intl.NumberFormat API
+
+## 🖼️ Пример использования
+
+```tsx
+<ProductCard
+  title="Кружка керамическая"
+  origin="Россия"
+  price={34900}
+  currency="RUB"
+  imageUrl="https://example.com/mug.jpg"
+/>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+или
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+<ProductCard
+  {...someData}
+/>
+```
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+## ⚙️ Запуск проекта
+
+```bash
+npm install
+npm run dev
+```
+
+## 📁 Структура
+
+```bash
+components/
+  └── ProductCard/
+        ├── ProductCard.tsx
+        ├── ProductCard.types.ts
+        ├── ProductCard.module.css
+        └── index.ts
 ```
